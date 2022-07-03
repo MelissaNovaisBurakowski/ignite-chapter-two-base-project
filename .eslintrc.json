@@ -33,7 +33,7 @@
 				"custom": {
 					"regex": "^I[A-Z]",
 					"match": true
-				}
+				},
 			}
 		],
 		"class-methods-use-this": "off",
@@ -77,7 +77,12 @@
 				]
 			}
 		],
-		"prettier/prettier": "error"
+		"prettier/prettier": [
+			"error",
+			{
+			  "endOfLine": "auto"
+			}
+		  ]
 	},
 	"settings": {
 		"import/resolver": {

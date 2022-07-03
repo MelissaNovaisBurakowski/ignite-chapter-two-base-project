@@ -4,7 +4,10 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "dev": "ts-node-dev --inspect --transpile-only --ignore-watch node_modules --respawn src/server.ts"
+    "dev": "ts-node-dev --inspect --transpile-only --ignore-watch node_modules --respawn src/server.ts",
+    "typeorm": "ts-node-dev ./node_modules/typeorm/cli",
+    "typeorm:migration:create": "typeorm migration:create",
+    "typeorm:migration:run": "typeorm migration:run -d data-source.ts"
   },
   "dependencies": {
     "@types/uuid": "^8.3.4",
