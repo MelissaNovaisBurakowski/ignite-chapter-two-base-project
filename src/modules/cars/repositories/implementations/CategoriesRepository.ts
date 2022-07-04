@@ -4,7 +4,6 @@ import {
   ICreateCategoryDTO,
 } from "../ICategoriesRepository";
 import { getRepository, Repository } from "typeorm";
-import { v4 as uuidv4 } from "uuid";
 
 class CategoriesRepository implements ICategoriesRepository {
   private repository: Repository<Category>;
