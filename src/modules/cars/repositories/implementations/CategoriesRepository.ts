@@ -3,13 +3,13 @@ import {
   ICategoriesRepository,
   ICreateCategoryDTO,
 } from "../ICategoriesRepository";
-import { getRepository, Repository } from "typeorm";
-
+import { AppDataSource } from "../../../../database";
+import { Repository } from "typeorm";
 class CategoriesRepository implements ICategoriesRepository {
   private repository: Repository<Category>;
 
   constructor() {
-    this.repository = getRepository(Category);
+    this.repository = AppDataSource.getRepository(Category);
   }
 
   async create({ name, description }: ICreateCategoryDTO): Promise<Category> {

@@ -1,13 +1,23 @@
-import { createConnection, getConnectionOptions } from "typeorm";
+import { DataSource } from "typeorm";
+import { User } from "../modules/accounts/entities/User";
+import { Category } from "../modules/cars/entities/Category";
+import { Specification } from "../modules/cars/entities/Specification";
 
-interface IOptions {
-  host: string;
-}
-
-getConnectionOptions().then((options) => {
-  const newOptions = options as IOptions;
-  newOptions.host = "database"; //Essa opção deverá ser EXATAMENTE o nome dado ao service do banco de dados
-  createConnection({
-    ...options,
-  });
+export const AppDataSource = new DataSource({
+  type: "postgres",
+  port: 5432,
+  host: "localhost",
+  username: "docker",
+  password: "ignite",
+  database: "rentx",
+  migrations: ["src/database/migrations/*.ts"],
+  entities: [User, Category, Specification],
 });
+
+AppDataSource.initialize()
+  .then(() => {
+    console.log("Database connected");
+  })
+  .catch((err) => {
+    console.log("Database Connection Failed" + err);
+  });
