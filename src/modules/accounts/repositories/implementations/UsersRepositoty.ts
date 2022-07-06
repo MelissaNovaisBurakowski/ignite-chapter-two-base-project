@@ -9,6 +9,7 @@ class UsersRepository implements IUsersRepository {
   constructor() {
     this.respository = AppDataSource.getRepository(User);
   }
+
   async create({
     name,
     email,
@@ -23,6 +24,11 @@ class UsersRepository implements IUsersRepository {
     });
 
     await this.respository.save(user);
+  }
+
+  async findByEmail(email: string): Promise<ICreateUserDTO> {
+    const user = await this.respository.findOne({ where: { email } });
+    return user;
   }
 }
 
