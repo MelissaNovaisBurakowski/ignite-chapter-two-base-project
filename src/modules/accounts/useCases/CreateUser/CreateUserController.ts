@@ -1,4 +1,3 @@
-import { ICreateUserDTO } from "../../dtos/ICreateUserDTO";
 import { CreateUserUseCase } from "./CreateUserUseCase";
 import { container } from "tsyringe";
 import { Response, Request } from "express";
